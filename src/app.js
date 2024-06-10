@@ -1,6 +1,8 @@
 const express = require('express');
 const cardRoutes = require('./routes/cardRoutes');
+const fetchDataToFile = require('./fetchDataToFile');
 
+// fetchDataToFile();
 const app = express();
 
 // Middleware

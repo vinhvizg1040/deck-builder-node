@@ -7,8 +7,8 @@ const fetchDataAndWriteToFile = async () => {
     try {
         const response = await axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php');
         const data = response.data;
-        fs.writeFileSync('cardinfo.json', JSON.stringify(data, null, 2));
-        console.log('Data written to cardinfo.json');
+        fs.writeFileSync('/src/cards.json', JSON.stringify(data, null, 2));
+        console.log('Data written to cards.json');
     } catch (error) {
         console.error('Error fetching or writing data:', error);
     }
@@ -17,5 +17,4 @@ const fetchDataAndWriteToFile = async () => {
 // Schedule the task to run daily at midnight
 cron.schedule('0 0 * * *', fetchDataAndWriteToFile);
 
-// Initial fetch when the script runs
-fetchDataAndWriteToFile();
+module.exports = fetchDataAndWriteToFile;
